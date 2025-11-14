@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quit Plan - Fresh Path</title>
+    <link rel="stylesheet" href="../css/styletracker2.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">
+        <img src="../assests/logo.png" alt="Fresh Path Logo" />
+        <span>Fresh Path</span>
+      </div>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="../pages/about.html">About</a>
+        <a href="../pages/tracker.html">Tracker</a>
+        <a href="../pages/appointment.html">Appointment</a>
+      </nav>
+    </header>
+    <section class="banner">
+      <h2>Today's plan.Tomorrow's Freedom</h2>
+    </section>
+      <div class="planner-container">
+        <form>
+          <label for="date">Select Date:</label>
+          <input type="date" id="date" name="date" />
+
+          <label for="goal">Today's Goal:</label>
+          <input
+            type="text"
+            id="goal"
+            name="goal"
+            placeholder="E.g., Avoid 3 cigarettes"
+          />
+
+          <label for="notes">Notes:</label>
+          <textarea
+            id="notes"
+            name="notes"
+            placeholder="How are you feeling today?"
+          ></textarea>
+
+          <div class="checkbox-section">
+            <p>Track your day:</p>
+            <label><input type="checkbox" /> Morning craving resisted</label>
+            <label><input type="checkbox" /> Avoided triggers</label>
+            <label><input type="checkbox" /> Exercised or relaxed</label>
+            <label><input type="checkbox" /> Stayed smoke-free</label>
+          </div>
+
+          <button type="submit">Save Day</button>
+        </form>
+      </div>
+    </section>
+     <footer>
+           <p>@ Designed with HTML and CSS</p>
+    </footer>
+  </body>
+</html>

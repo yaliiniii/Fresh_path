@@ -1,0 +1,151 @@
+:root {
+  --green:#2b644a;;
+  --white: #ffffff;
+  --gray: #000000;
+  --light-bg: #f8f8f8;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+.navbar {
+  background-color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 45px;
+  height: 45px;
+}
+
+.logo span {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--gray);
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--gray);
+  font-weight: 600;
+  margin-left: 35px;
+  font-size: 1rem;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--green);
+  transition: 0.3s;
+}
+
+.banner {
+  background-color: var(--green);
+  color: var(--white);
+  text-align: center;
+  padding: 70px 20px;
+}
+
+.banner h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.banner p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+
+.appointment-section {
+  background-color: var(--light-bg);
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.appointment-container {
+  background-color: var(--white);
+  padding: 40px 50px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px var(--shadow);
+  max-width: 500px;
+  width: 100%;
+}
+
+.appointment-container h3 {
+  color: var(--green);
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.6rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  text-align: left;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: var(--green);
+}
+
+input,
+select,
+textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: none;
+  height: 80px;
+}
+
+button {
+  background-color: var(--green);
+  color: var(--white);
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #216052;
+}
+footer{
+    background: black;
+    padding: 20px;
+}
+
+footer p{
+  color: white;
+    text-align: center;
+    font-size: 13px;
+} 

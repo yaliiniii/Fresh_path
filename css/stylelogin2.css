@@ -1,0 +1,106 @@
+:root {
+      --bg-gradient: linear-gradient(135deg, #A8E6CF, #81cec7);
+      --card-bg: #F7FFF7;
+      --primary: #379683;
+      --primary-hover: #2C6E65;
+      --text: #333333;
+      --link: #2C6E65;
+      --link-hover: #56CFE1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: var(--bg-gradient);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      
+    }
+
+    .login-container {
+      background: var(--card-bg);
+      width: 400px;
+      padding: 40px 30px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--primary-hover);
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    .form-container{
+      background-color:white;
+      padding:40px 30px;
+      border-radius:16px;
+    }
+    form {
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 18px;
+      border: 1.5px solid #ccc;
+      border-radius: 10px;
+      outline: none;
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 6px rgba(55, 150, 131, 0.3);
+    }
+
+    .btn {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+    .switch-link{
+      margin:15px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.85rem;
+      color: var(--primary-hover);
+    }
+
+    .footer span {
+      color: var(--primary);
+      font-weight: 700;
+    }

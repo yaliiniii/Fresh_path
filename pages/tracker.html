@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daily Tracker - Fresh Path</title>
+  <link rel="stylesheet" href="../css/styletracker.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="../assests/logo.png" alt="">
+      <span>Fresh Path</span>
+    </div>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../pages/about.html">About</a>
+      <a href="../pages/quitplan.html">Quit plan</a>
+      <a href="../pages/appointment.html">Appointment</a>
+    </nav>
+  </header>
+  <section class="heading">
+    <h2>Make your plan, Track your day</h2>
+  </section>
+  <section class="section">
+   <div class="plan-section">
+      <h2>Personal plan</h2>
+      <form>
+        <label for="cigarettes">Cigarettes smoked per day</label>
+        <input
+          type="number"
+          id="cigarettes"
+          name="cigarettes"
+          placeholder="e.g., 10"
+        />
+
+        <label for="years">Number of years smoked</label>
+        <input type="number" id="years" name="years" placeholder="e.g., 5" />
+
+        <label for="triggers">Your triggers</label>
+        <input
+          type="text"
+          id="triggers"
+          name="triggers"
+          placeholder="e.g., stress, social gatherings"
+        />
+
+        <label for="activity">Your favorite activity</label>
+        <input
+          type="text"
+          id="activity"
+          name="activity"
+          placeholder="e.g., walking, painting, music"
+        />
+
+        <label for="reason">Reason to quit</label>
+        <textarea
+          id="reason"
+          name="reason"
+          rows="3"
+          placeholder="What motivates you to quit?"
+        ></textarea>
+
+        <label for="quit-date">Target quit date</label>
+        <input type="date" id="quit-date" name="quit-date" />
+
+        <label for="support">Support person</label>
+        <input
+          type="text"
+          id="support"
+          name="support"
+          placeholder="Who will support you?"
+        />
+        <div class="submit-btn">
+         <a href="../pages/tracker2.html" class="submit-btn" type="button">
+          Save my plan
+         </a>
+        </div>
+      </form>
+    </div>
+    </section>
+    <footer>
+           <p>@ Designed with HTML and CSS</p>
+    </footer>
+
+  </body>
+</html>
+
+
+ 
