@@ -78,7 +78,6 @@
       margin-bottom: 18px;
       border: 1.5px solid #ccc;
       border-radius: 10px;
-      outline: none;
       font-size: 0.95rem;
       transition: 0.3s;
     }
@@ -96,7 +95,7 @@
     .btn {
       width: 100%;
       background: var(--primary);
-      color: white !important;
+      color: white;
       border: none;
       padding: 14px;
       font-size: 1rem;

@@ -1,5 +1,6 @@
 :root {
-  --green:#2b644a;;
+  --green: #2b644a;
+  ;
   --white: #ffffff;
   --gray: #000000;
   --light-bg: #f8f8f8;
@@ -139,13 +140,14 @@ button {
 button:hover {
   background-color: #216052;
 }
-footer{
-    background: black;
-    padding: 20px;
+
+footer {
+  background: black;
+  padding: 20px;
 }
 
-footer p{
+footer p {
   color: white;
-    text-align: center;
-    font-size: 13px;
-} 
+  text-align: center;
+  font-size: 13px;
+}
