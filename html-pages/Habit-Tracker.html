@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Freshpath website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .animate-checkbox:checked+div {
+            background-color: #0f3715 !important;
+            border-color: #0f3715 !important;
+        }
+
+        .animate-checkbox:checked+div svg path {
+            stroke-dashoffset: 0 !important;
+        }
+
+        .tick-path {
+            stroke-dasharray: 20;
+            stroke-dashoffset: 20;
+        }
+    </style>
+</head>
+
+<body class="m-0 p-0 box-border bg-[#f5f9f6] text-[#0f3715] leading-[1.6] flex flex-col min-h-screen">
+    <nav class="bg-white py-4 sticky top-0 z-50 border-b border-[#0000000d]">
+        <div class="flex justify-between items-center px-5 mx-auto max-w-7xl">
+            <a href="../index.html" class="text-2xl font-extrabold flex items-center gap-2 text-[#0f3715]">
+                <img src="../assests/freshpath_logo.jpg" class="w-10 h-auto sm:w-12" alt="FreshPath Logo" />
+                FreshPath
+            </a>
+
+            <button onclick="toggleMobileMenu()" class="block md:hidden text-[#0f3715] focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+
+            <div class="hidden md:flex items-center">
+                <a class="bg-[#0f3715] text-white py-2.5 px-6 rounded-xl font-semibold text-sm transition-all hover:-translate-y-[2px]"
+                    href="../index.html">Sign Out</a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-[#0000000d] px-5 py-6">
+            <div class="flex flex-col gap-4">
+                <a class="font-medium text-[#0f3715]" href="./my-plan.html"><i class="fa fa-calendar mr-2"></i> My
+                    Plan</a>
+                <a class="font-medium text-[#000000]" href="./Habit-Tracker.html"><i class="fa fa-check mr-2"></i> Habit
+                    Tracker</a>
+                <a class="font-medium text-[#0f3715]" href="./progress.html"><i class="fa fa-area-chart mr-2"></i>
+                    Progress</a>
+                <a class="font-medium text-[#0f3715]" href="./appointment.html"><i class="fa fa-stethoscope mr-2"></i>
+                    Appointment</a>
+                <a class="font-medium text-[#0f3715]" href="./my-appointments.html"><i class="fa fa-list-alt mr-2"></i>
+                    My Appointments</a>
+                <a class="font-medium text-[#0f3715]" href="./contact.html"><i class="fa fa-phone mr-2"></i> Contact</a>
+                <hr class="border-[#0000000d]">
+                <a class="py-3 px-6 text-center bg-[#0f3715] text-white rounded-xl font-medium"
+                    href="../index.html">Sign Out</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+
+    <div class="py-6 md:py-8 px-4 md:px-0 min-h-[calc(100vh-140px)] w-full max-w-[1200px] mx-auto box-border">
+        <div class="grid grid-cols-1 md:grid-cols-[250px_1fr] gap-8 items-start">
+            <aside class="hidden md:block bg-white p-6 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.05)] h-fit">
+                <ul class="list-none">
+                    <li class="mb-2">
+                        <a class="text-[#0f3715] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./my-plan.html">
+                            <span class="ml-3"> <i class="fa fa-calendar"></i> My Plan</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class=" bg-[#ddffd8] text-[#2c4c32] flex items-center py-3 px-6 rounded-xl font-medium transition-all"
+                            href="./Habit-Tracker.html">
+                            <span class="ml-3"> <i class="fa fa-check"></i> Habit Tracker</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="text-[#2c4c32] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./progress.html">
+                            <span class="ml-3"> <i class="fa fa-area-chart"></i> Progress</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="text-[#2c4c32] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./appointment.html">
+                            <span class="ml-3"> <i class="fa fa-stethoscope"></i> Appointment</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="text-[#2c4c32] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./my-appointments.html">
+                            <span class="ml-3"> <i class="fa fa-list-alt"></i> My Appointments</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="text-[#2c4c32] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./contact.html">
+                            <span class="ml-3"> <i class="fa fa-phone"></i> Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+            <main>
+                <div class="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <h2 class="font-bold leading-[1.2] text-[#0f3715] text-2xl">Daily Tracker</h2>
+                        <span id="todayDate" class="text-[#2c4c32] font-medium">Today, ...</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white p-2.5 rounded-xl shadow-sm border border-[#0000000d]">
+                        <label for="datePicker" class="text-sm font-semibold text-gray-500">View Date:</label>
+                        <input type="date" id="datePicker"
+                            class="bg-transparent border-none text-[#0f3715] font-medium focus:ring-0 outline-none cursor-pointer">
+                    </div>
+                </div>
+
+                <!-- Add Habit Bar -->
+                <div
+                    class="bg-white rounded-2xl p-1.5 flex items-center shadow-[0_4px_15px_rgba(0,0,0,0.05)] mb-8 border border-[#0000000d]">
+                    <input id="habitInput"
+                        class="w-full py-4 px-6 text-base bg-transparent border-none focus:ring-0 outline-none placeholder-gray-400"
+                        type="text" placeholder="Add a new habit...">
+                    <button id="addHabitBtn"
+                        class="bg-[#0f3715] text-white w-12 h-12 rounded-xl transition-all hover:bg-[#1a4d1f] flex items-center justify-center cursor-pointer shrink-0">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+
+                <div id="habitList" class="space-y-3">
+                    <!-- Habits will be loaded here -->
+                </div>
+
+                <!-- Daily Journal -->
+                <div
+                    class="bg-white rounded-[20px] p-8 mt-10 shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-[#0000000d]">
+                    <div class="mb-6">
+                        <h3 class="font-bold text-[#0f3715] text-xl mb-1">Daily Journal</h3>
+                        <p id="journalDateMsg" class="text-gray-500">How are you feeling today?</p>
+                    </div>
+                    <textarea id="journalEntry"
+                        class="w-full p-5 rounded-2xl border-2 border-[#c6eacb] bg-[#fcfdfc] resize-none transition-all duration-300 focus:outline-none focus:border-[#0f3715] focus:bg-white text-[#0f3715] placeholder-gray-400"
+                        rows="6" placeholder="Dear Diary, today was..."></textarea>
+                    <div class="mt-6 flex justify-end">
+                        <button id="saveJournalBtn"
+                            class="bg-[#0f3715] text-white py-3.5 px-10 font-bold text-base transition-all hover:bg-[#1a4d1f] hover:shadow-lg active:scale-95 cursor-pointer rounded-xl">
+                            Save Entry
+                        </button>
+                    </div>
+                </div>
+
+                <script>
+                    const habitInput = document.getElementById('habitInput');
+                    const addHabitBtn = document.getElementById('addHabitBtn');
+                    const habitList = document.getElementById('habitList');
+                    const saveJournalBtn = document.getElementById('saveJournalBtn');
+                    const journalTextarea = document.getElementById('journalEntry');
+                    const todayDateSpan = document.getElementById('todayDate');
+                    const journalDateMsg = document.getElementById('journalDateMsg');
+                    const datePicker = document.getElementById('datePicker');
+
+                    // Set initial date to today
+                    const today = new Date();
+                    const todayStr = today.toISOString().split('T')[0];
+                    datePicker.value = todayStr;
+                    datePicker.max = todayStr; // Prevent future dates in the picker
+                    let selectedDate = todayStr;
+
+                    function updateDisplayDate() {
+                        const dateObj = new Date(selectedDate);
+                        const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+                        todayDateSpan.innerText = `${dateObj.toLocaleDateString('en-US', options)}`;
+                    }
+
+                    datePicker.addEventListener('change', (e) => {
+                        if (e.target.value > todayStr) {
+                            alert("You cannot track habits for future dates.");
+                            datePicker.value = todayStr;
+                            selectedDate = todayStr;
+                        } else {
+                            selectedDate = e.target.value;
+                        }
+                        updateDisplayDate();
+                        loadHabits();
+                        loadJournal(true);
+                    });
+
+                    async function toggleHabit(id, completed) {
+                        try {
+                            await fetch(`http://127.0.0.1:8000/habits/${id}`, {
+                                method: 'PUT',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ completed: completed, date: selectedDate })
+                            });
+                            loadHabits();
+                        } catch (err) {
+                            console.error('Failed to toggle habit', err);
+                        }
+                    }
+
+                    async function deleteHabit(id) {
+                        if (!confirm('Are you sure you want to delete this habit?')) return;
+                        try {
+                            const response = await fetch(`http://127.0.0.1:8000/habits/${id}`, {
+                                method: 'DELETE'
+                            });
+                            if (response.ok) {
+                                loadHabits();
+                            }
+                        } catch (err) {
+                            console.error('Failed to delete habit', err);
+                        }
+                    }
+
+                    async function loadHabits() {
+                        try {
+                            const userJson = localStorage.getItem('user');
+                            const user = userJson ? JSON.parse(userJson) : null;
+                            if (!user) return;
+
+                            const response = await fetch(`http://127.0.0.1:8000/habits/?user_id=${user.id}&date=${selectedDate}`);
+                            const habits = await response.json();
+                            habitList.innerHTML = '';
+
+                            if (habits.length === 0) {
+                                habitList.innerHTML = `<div class="bg-white rounded-xl py-12 px-6 text-center border-2 border-dashed border-gray-100">
+                                    <p class="text-gray-400 italic">No habits added for ${selectedDate === todayStr ? 'today' : selectedDate} yet.</p>
+                                </div>`;
+                                return;
+                            }
+
+                            habits.forEach(habit => {
+                                const habitItem = document.createElement('div');
+                                habitItem.className = 'bg-white rounded-xl py-4 px-6 shadow-sm border border-[#0000000d] flex items-center justify-between transition-all hover:shadow-md';
+                                habitItem.innerHTML = `
+                                    <label class="flex items-center gap-4 cursor-pointer group w-full py-1">
+                                        <input class="peer hidden animate-checkbox" type="checkbox" ${habit.completed ? 'checked' : ''} onchange="toggleHabit(${habit.id}, this.checked)">
+                                        <div class="w-6 h-6 border-2 border-[#0f3715] rounded-lg bg-white flex items-center justify-center transition-all duration-300 group-hover:bg-[#f5f9f6] group-active:scale-90 shadow-sm overflow-hidden">
+                                            <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                                                <path class="tick-path" d="M20 6L9 17L4 12"></path>
+                                            </svg>
+                                        </div>
+                                        <div class="text-[#0f3715] font-semibold text-base transition-all duration-500 ${habit.completed ? 'line-through opacity-40 translate-x-1' : 'group-hover:translate-x-0.5'}">
+                                            ${habit.name}
+                                        </div>
+                                    </label>
+                                    <button onclick="deleteHabit(${habit.id})" class="text-gray-300 hover:text-red-500 transition-all duration-300 cursor-pointer p-2 hover:bg-red-50 rounded-lg">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                `;
+                                habitList.appendChild(habitItem);
+                            });
+                        } catch (err) {
+                            console.error('Error loading habits:', err);
+                        }
+                    }
+
+                    async function loadJournal(refillTextarea = false) {
+                        try {
+                            const userJson = localStorage.getItem('user');
+                            const user = userJson ? JSON.parse(userJson) : null;
+                            if (!user) return;
+
+                            const response = await fetch(`http://127.0.0.1:8000/habits/journal?user_id=${user.id}&date=${selectedDate}`);
+                            const entries = await response.json();
+
+                            const entry = entries[0];
+                            if (entry) {
+                                if (refillTextarea) journalTextarea.value = entry.entry;
+                                journalDateMsg.innerText = `Continuing your thoughts for ${selectedDate === todayStr ? 'today' : selectedDate}...`;
+                            } else {
+                                if (refillTextarea) journalTextarea.value = '';
+                                journalDateMsg.innerText = `How are you feeling for ${selectedDate === todayStr ? 'today' : selectedDate}?`;
+                            }
+                        } catch (err) {
+                            console.error('Error loading journal:', err);
+                        }
+                    }
+
+                    addHabitBtn.addEventListener('click', async () => {
+                        if (selectedDate > todayStr) {
+                            alert('You cannot add habits for future dates.');
+                            return;
+                        }
+                        const name = habitInput.value.trim();
+                        if (!name) return;
+                        const userJson = localStorage.getItem('user');
+                        const user = userJson ? JSON.parse(userJson) : null;
+                        if (!user) {
+                            alert('Please login first');
+                            return;
+                        }
+
+                        const data = {
+                            name: name,
+                            completed: false,
+                            date: selectedDate,
+                            user_id: user.id
+                        };
+
+                        try {
+                            const response = await fetch(`http://127.0.0.1:8000/habits/?user_id=${user.id}`, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(data)
+                            });
+                            if (response.ok) {
+                                habitInput.value = '';
+                                loadHabits();
+                            } else {
+                                const errData = await response.json().catch(() => ({}));
+                                alert('Error: ' + (errData.detail || response.statusText));
+                            }
+                        } catch (err) {
+                            alert('Network error: Please ensure the backend is running.');
+                        }
+                    });
+
+                    saveJournalBtn.addEventListener('click', async () => {
+                        if (selectedDate > todayStr) {
+                            alert('You cannot save journal entries for future dates.');
+                            return;
+                        }
+                        const entryText = journalTextarea.value.trim();
+                        if (!entryText) {
+                            alert('Please write something before saving.');
+                            return;
+                        }
+                        const userJson = localStorage.getItem('user');
+                        const user = userJson ? JSON.parse(userJson) : null;
+                        if (!user) {
+                            alert('Please login first');
+                            return;
+                        }
+
+                        const data = {
+                            entry: entryText,
+                            date: selectedDate,
+                            user_id: user.id
+                        };
+
+                        try {
+                            const response = await fetch(`http://127.0.0.1:8000/habits/journal?user_id=${user.id}`, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(data)
+                            });
+                            if (response.ok) {
+                                alert('Journal entry saved successfully!');
+                                loadJournal(false);
+                            } else {
+                                const errData = await response.json().catch(() => ({}));
+                                alert('Error: ' + (errData.detail || response.statusText));
+                            }
+                        } catch (err) {
+                            alert('Network error while saving journal');
+                        }
+                    });
+
+                    // Initial load
+                    window.toggleHabit = toggleHabit;
+                    window.deleteHabit = deleteHabit;
+                    updateDisplayDate();
+                    loadHabits();
+                    loadJournal(true);
+                </script>
+            </main>
+        </div>
+    </div>
+    <footer class="mt-auto text-center bg-[#0f3715] py-8 px-0 text-white">
+        <div class="py-0 px-5 my-0 mx-auto max-w-7xl">
+            <p>2026 Fresh Path. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

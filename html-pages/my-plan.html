@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Freshpath website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="m-0 p-0 box-border bg-[#f5f9f6] text-[#0f3715] leading-[1.6] flex flex-col min-h-screen">
+    <nav class="bg-white py-4 sticky top-0 z-50 border-b border-[#0000000d]">
+        <div class="flex justify-between items-center px-5 mx-auto max-w-7xl">
+            <a href="../index.html" class="text-2xl font-extrabold flex items-center gap-2 text-[#0f3715]">
+                <img src="../assests/freshpath_logo.jpg" class="w-10 h-auto sm:w-12" alt="FreshPath Logo" />
+                FreshPath
+            </a>
+
+            <button onclick="toggleMobileMenu()" class="block md:hidden text-[#0f3715] focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+
+            <div class="hidden md:flex items-center">
+                <a class="bg-[#0f3715] text-white py-2.5 px-6 rounded-xl font-semibold text-sm transition-all hover:-translate-y-[2px]"
+                    href="../index.html">Sign Out</a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-[#0000000d] px-5 py-6">
+            <div class="flex flex-col gap-4">
+                <a class="font-medium text-[#000000]" href="./my-plan.html"><i class="fa fa-calendar mr-2"></i> My
+                    Plan</a>
+                <a class="font-medium text-[#0f3715]" href="./Habit-Tracker.html"><i class="fa fa-check mr-2"></i> Habit
+                    Tracker</a>
+                <a class="font-medium text-[#0f3715]" href="./progress.html"><i class="fa fa-area-chart mr-2"></i>
+                    Progress</a>
+                <a class="font-medium text-[#0f3715]" href="./appointment.html"><i class="fa fa-stethoscope mr-2"></i>
+                    Appointment</a>
+                <a class="font-medium text-[#0f3715]" href="./my-appointments.html"><i class="fa fa-list-alt mr-2"></i>
+                    My Appointments</a>
+                <a class="font-medium text-[#0f3715]" href="./contact.html"><i class="fa fa-phone mr-2"></i> Contact</a>
+                <hr class="border-[#0000000d]">
+                <a class="py-3 px-6 text-center bg-[#0f3715] text-white rounded-xl font-medium"
+                    href="../index.html">Sign Out</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+
+    <div class="py-6 md:py-8 px-4 md:px-0 min-h-[calc(100vh-140px)] w-full max-w-[1200px] mx-auto box-border">
+        <div class="grid grid-cols-1 md:grid-cols-[250px_1fr] gap-8 items-start">
+            <aside class="hidden md:block bg-white p-6 rounded-2xl shadow-[0_2px_8_rgba(0,0,0,0.05)] h-fit">
+                <ul class="list-none">
+                    <li class="mb-2">
+                        <a class="bg-[#ddffd8] text-[#0f3715] flex items-center py-3 px-6 rounded-xl font-medium transition-all"
+                            href="./my-plan.html">
+                            <span class="ml-3"> <i class="fa fa-calendar"></i> My Plan</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="text-[#2c4c32] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./Habit-Tracker.html">
+                            <span class="ml-3"> <i class="fa fa-check"></i> Habit Tracker</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="text-[#2c4c32] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./progress.html">
+                            <span class="ml-3"> <i class="fa fa-area-chart"></i> Progress</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="text-[#2c4c32] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./appointment.html">
+                            <span class="ml-3"> <i class="fa fa-stethoscope"></i> Appointment</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="text-[#2c4c32] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./my-appointments.html">
+                            <span class="ml-3"> <i class="fa fa-list-alt"></i> My Appointments</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="text-[#2c4c32] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./contact.html">
+                            <span class="ml-3"> <i class="fa fa-phone"></i> Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+            <main class="mb-8 justify-between items-center text-[#0f3715]">
+                <div class="flex justify-between">
+                    <h2 class="font-bold leading-[1.2] text-[#0f3715]">My Wellness Plan</h2>
+                    <button
+                        class="bg-[#0f3715] text-white inline-flex items-center justify-center font-semibold py-3 px-6 rounded-xl text-base shadow-[0_4px_15px_rgba(74,124,89,0.3)] cursor-pointer"
+                        onclick="saveProfile()">Save Changes</button>
+                </div>
+                <div class="bg-[#d4edda] text-[#155724] p-4 mb-4 rounded-lg hidden" id="savemsg">Changes saved
+                    successfully</div>
+                <div class="bg-white p-6 md:p-8 rounded-2xl mb-8 leading-[1.6] shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
+                    <h3 class="mb-6 leading-[1.2] font-bold text-[#0f3715]">Personal Details</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
+                        <div class="mb-6">
+                            <label class="mb-2 font-medium text-[#2c4c32] leading-[1.6]">Full Name</label>
+                            <input
+                                class="w-full py-3 px-6 border-2 border-[#c6eacb] rounded-xl bg-[#FAFAFA] text-base transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                                type="text" id="fullname">
+                        </div>
+                        <div class="mb-6">
+                            <label class="mb-2 font-medium text-[#2c4c32] leading-[1.6]">Email Address</label>
+                            <input
+                                class="w-full py-3 px-6 border-2 border-[#c6eacb] rounded-xl bg-[#FAFAFA] text-base transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                                type="email" id="email">
+                        </div>
+                        <div class="mb-6">
+                            <label class="mb-2 font-medium text-[#2c4c32] leading-[1.6]">Age</label>
+                            <input
+                                class="w-full py-3 px-6 border-2 border-[#c6eacb] rounded-xl bg-[#FAFAFA] text-base transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                                type="number" id="age">
+                        </div>
+                        <div class="mb-6">
+                            <label class="mb-2 font-medium text-[#2c4c32] leading-[1.6]">Phone Number</label>
+                            <input
+                                class="w-full py-3 px-6 border-2 border-[#c6eacb] rounded-xl bg-[#FAFAFA] text-base transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                                type="tel" id="phone">
+                        </div>
+                        <div class="mb-6">
+                            <label class="mb-2 font-medium text-[#2c4c32] leading-[1.6]">Password</label>
+                            <input
+                                class="w-full py-3 px-6 border-2 border-[#c6eacb] rounded-xl bg-[#FAFAFA] text-base transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                                type="password" id="password" placeholder="Change password if needed">
+                        </div>
+                        <div class="mb-6 sm:col-span-2">
+                            <label class="mb-2 font-medium text-[#2c4c32] leading-[1.6]">Favorite Activity / Hobby
+                            </label>
+                            <input
+                                class="w-full py-3 px-6 border-2 border-[#c6eacb] rounded-xl bg-[#FAFAFA] text-base transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                                type="text" id="Hobby">
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 md:p-8 rounded-2xl mb-8 leading-[1.6] shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
+                    <h3 class="mb-6 leading-[1.2] font-bold text-[#0f3715]">My Quit Plan</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
+                        <div class="mb-6">
+                            <label class="mb-2 font-medium text-[#2c4c32] leading-[1.6]">Years Smoked</label>
+                            <input
+                                class="w-full py-3 px-6 border-2 border-[#c6eacb] rounded-xl bg-[#FAFAFA] text-base transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                                type="number" id="yearsSmoked">
+                        </div>
+                        <div class="mb-6">
+                            <label class="mb-2 font-medium text-[#2c4c32] leading-[1.6]">Cigarettes per Day</label>
+                            <input
+                                class="w-full py-3 px-6 border-2 border-[#c6eacb] rounded-xl bg-[#FAFAFA] text-base transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                                type="number" id="count">
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label class="mb-2 font-medium text-[#2c4c32] leading-[1.6]">Target Quit Date</label>
+                        <input
+                            class="w-full py-3 px-6 border-2 border-[#c6eacb] rounded-xl bg-[#FAFAFA] text-base transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                            type="date" id="date">
+                    </div>
+                    <div class="mb-6">
+                        <label class="mb-2 font-medium text-[#2c4c32] leading-[1.6]">My "Why" (Reason for
+                            Quitting)</label>
+                        <textarea
+                            class="w-full py-3 px-6 border-2 border-[#c6eacb] rounded-xl bg-[#FAFAFA] text-base transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                            id="Reason" rows="3"></textarea>
+                    </div>
+                    <div class="mb-6">
+                        <label class="mb-2 font-medium text-[#2c4c32] leading-[1.6]">Known Triggers</label>
+                        <textarea
+                            class="w-full py-3 px-6 border-2 border-[#c6eacb] rounded-xl bg-[#FAFAFA] text-base transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                            id="Triggers" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <script>
+                    async function loadProfile() {
+                        const userStr = localStorage.getItem('user');
+                        if (!userStr) {
+                            window.location.href = './user-login.html';
+                            return;
+                        }
+                        const loggedInUser = JSON.parse(userStr);
+                        const userId = loggedInUser.id;
+
+                        try {
+                            const response = await fetch(`http://127.0.0.1:8000/users/${userId}`);
+                            if (response.ok) {
+                                const user = await response.json();
+                                document.getElementById('fullname').value = user.name || '';
+                                document.getElementById('email').value = user.email || '';
+                                document.getElementById('age').value = user.age || '';
+                                document.getElementById('phone').value = user.phone || '';
+                                document.getElementById('password').value = user.password || '';
+                                document.getElementById('Hobby').value = user.activity || '';
+                                document.getElementById('yearsSmoked').value = user.years_smoked || 0;
+                                document.getElementById('count').value = user.cigarettes_per_day || 0;
+                                document.getElementById('date').value = user.target_quit_date || '';
+                                document.getElementById('Reason').value = user.reason_quitting || '';
+                                document.getElementById('Triggers').value = user.triggers || '';
+                            }
+                        } catch (err) {
+                            console.error('Failed to load profile');
+                        }
+                    }
+
+                    async function saveProfile() {
+                        const userStr = localStorage.getItem('user');
+                        if (!userStr) return;
+                        const loggedInUser = JSON.parse(userStr);
+                        const userId = loggedInUser.id;
+
+                        const data = {
+                            name: document.getElementById('fullname').value,
+                            email: document.getElementById('email').value,
+                            age: parseInt(document.getElementById('age').value) || null,
+                            phone: document.getElementById('phone').value,
+                            password: document.getElementById('password').value,
+                            activity: document.getElementById('Hobby').value,
+                            years_smoked: parseInt(document.getElementById('yearsSmoked').value) || 0,
+                            cigarettes_per_day: parseInt(document.getElementById('count').value) || 0,
+                            target_quit_date: document.getElementById('date').value || null,
+                            reason_quitting: document.getElementById('Reason').value,
+                            triggers: document.getElementById('Triggers').value
+                        };
+
+                        try {
+                            const response = await fetch(`http://127.0.0.1:8000/users/${userId}`, {
+                                method: 'PUT',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(data)
+                            });
+                            if (response.ok) {
+                                const msg = document.getElementById('savemsg');
+                                msg.classList.remove('hidden');
+                                setTimeout(() => msg.classList.add('hidden'), 3000);
+                            } else {
+                                const err = await response.json();
+                                alert('Failed to save changes: ' + (err.detail || 'Unknown error'));
+                            }
+                        } catch (err) {
+                            alert('Connection error');
+                        }
+                    }
+
+                    loadProfile();
+                </script>
+            </main>
+        </div>
+    </div>
+    <footer class="mt-auto text-center bg-[#0f3715] py-8 px-0 text-white">
+        <div class="py-0 px-5 my-0 mx-auto max-w-7xl">
+            <p>2026 Fresh Path. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

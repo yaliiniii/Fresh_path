@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Appointments - FreshPath</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="m-0 p-0 box-border bg-[#f5f9f6] text-[#0f3715] leading-relaxed flex flex-col min-h-screen">
+    <nav class="bg-white py-4 sticky top-0 z-50 border-b border-[#0000000d]">
+        <div class="flex justify-between items-center px-5 mx-auto max-w-7xl">
+            <a href="../index.html" class="text-2xl font-extrabold flex items-center gap-2 text-[#0f3715]">
+                <img src="../assests/freshpath_logo.jpg" class="w-10 h-auto sm:w-12" alt="FreshPath Logo" />
+                FreshPath
+            </a>
+
+            <button onclick="toggleMobileMenu()" class="block md:hidden text-[#0f3715] focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+
+            <div class="hidden md:flex items-center">
+                <a class="bg-[#0f3715] text-white py-2.5 px-6 rounded-xl font-semibold text-sm transition-all hover:-translate-y-[2px]"
+                    href="../index.html">Sign Out</a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-[#0000000d] px-5 py-6">
+            <div class="flex flex-col gap-4">
+                <a class="font-medium text-[#0f3715]" href="./my-plan.html"><i class="fa fa-calendar mr-2"></i> My
+                    Plan</a>
+                <a class="font-medium text-[#0f3715]" href="./Habit-Tracker.html"><i class="fa fa-check mr-2"></i> Habit
+                    Tracker</a>
+                <a class="font-medium text-[#0f3715]" href="./progress.html"><i class="fa fa-area-chart mr-2"></i>
+                    Progress</a>
+                <a class="font-medium text-[#0f3715]" href="./appointment.html"><i class="fa fa-stethoscope mr-2"></i>
+                    Appointment</a>
+                <a class="font-medium text-[#000000]" href="./my-appointments.html"><i class="fa fa-list-alt mr-2"></i>
+                    My Appointments</a>
+                <a class="font-medium text-[#0f3715]" href="./contact.html"><i class="fa fa-phone mr-2"></i> Contact</a>
+                <hr class="border-[#0000000d]">
+                <a class="py-3 px-6 text-center bg-[#0f3715] text-white rounded-xl font-medium"
+                    href="../index.html">Sign Out</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+
+    <div class="py-6 md:py-8 px-4 md:px-0 min-h-[calc(100vh-140px)] w-full max-w-[1200px] mx-auto box-border">
+        <div class="grid grid-cols-1 md:grid-cols-[250px_1fr] gap-8 items-start">
+            <aside class="hidden md:block bg-white p-6 rounded-2xl shadow-[0_2px_8_rgba(0,0,0,0.05)] h-fit">
+                <ul class="list-none">
+                    <li class="mb-2">
+                        <a class="text-[#0f3715] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./my-plan.html">
+                            <span class="ml-3"> <i class="fa fa-calendar"></i> My Plan</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="text-[#2c4c32] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./Habit-Tracker.html">
+                            <span class="ml-3"> <i class="fa fa-check"></i> Habit Tracker</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="text-[#2c4c32] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./progress.html">
+                            <span class="ml-3"> <i class="fa fa-area-chart"></i> Progress</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="text-[#2c4c32] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./appointment.html">
+                            <span class="ml-3"> <i class="fa fa-stethoscope"></i> Appointment</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class=" bg-[#ddffd8] text-[#0f3715] flex items-center py-3 px-6 rounded-xl font-bold transition-all"
+                            href="./my-appointments.html">
+                            <span class="ml-3"> <i class="fa fa-list-alt"></i> My Appointments</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="text-[#2c4c32] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./contact.html">
+                            <span class="ml-3"> <i class="fa fa-phone"></i> Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+
+            <main class="text-[#0f3715]">
+                <div class="mb-8">
+                    <h2 class="font-bold text-3xl text-[#0f3715] mb-2">My Booked Sessions</h2>
+                    <p class="text-[#2c4c32]">Keep track of your upcoming therapy and consultation sessions.</p>
+                </div>
+
+                <div id="loadingState" class="text-center py-12">
+                    <i class="fa fa-spinner fa-spin text-3xl text-[#0f3715]"></i>
+                    <p class="mt-2 text-gray-500">Loading your appointments...</p>
+                </div>
+
+                <div id="appointmentsList" class="space-y-4 hidden">
+                    <!-- Appointments will be loaded here dynamically -->
+                </div>
+
+                <div id="emptyState"
+                    class="hidden text-center py-16 bg-white rounded-2xl shadow-sm border border-dashed border-gray-200">
+                    <div
+                        class="bg-[#f5f9f6] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-[#0f3715]/20">
+                        <i class="fa fa-calendar-plus-o text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#0f3715]">No Appointments Found</h3>
+                    <p class="text-gray-500 mb-6 max-w-xs mx-auto">You haven't scheduled any sessions yet. Our
+                        specialists are here to help!</p>
+                    <a href="./appointment.html"
+                        class="inline-block bg-[#0f3715] text-white py-3 px-8 rounded-xl font-bold transition-all hover:bg-[#1a4d1f] hover:shadow-lg">
+                        Browse Specialists
+                    </a>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer class="mt-auto text-center bg-[#0f3715] py-8 text-white">
+        <div class="container mx-auto px-5">
+            <p>&copy; 2026 Fresh Path. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        async function loadMyAppointments() {
+            const listDiv = document.getElementById('appointmentsList');
+            const loadingDiv = document.getElementById('loadingState');
+            const emptyDiv = document.getElementById('emptyState');
+
+            try {
+                const userJson = localStorage.getItem('user');
+                const user = userJson ? JSON.parse(userJson) : null;
+
+                if (!user) {
+                    loadingDiv.innerHTML = `
+                        <div class="bg-red-50 text-red-700 p-6 rounded-2xl border border-red-100">
+                            <i class="fa fa-exclamation-circle text-2xl mb-2"></i>
+                            <p class="font-bold">Authentication Required</p>
+                            <p class="text-sm">Please <a href="./user-login.html" class="underline">log in</a> to view your personal dashboard.</p>
+                        </div>`;
+                    return;
+                }
+
+                const response = await fetch('http://127.0.0.1:8000/appointments/');
+                const allAppointments = await response.json();
+
+                const myApps = allAppointments.filter(app => app.user_id === user.id || (app.user_name === user.name && !app.user_id));
+
+                loadingDiv.classList.add('hidden');
+
+                if (myApps.length === 0) {
+                    emptyDiv.classList.remove('hidden');
+                    return;
+                }
+
+                listDiv.classList.remove('hidden');
+                listDiv.innerHTML = myApps.map(app => `
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border-l-[6px] 
+                        ${app.status === 'Accepted' ? 'border-[#0f3715]' : (app.status === 'Rejected' ? 'border-red-500' : (app.status === 'Cancelled' ? 'border-gray-400' : 'border-orange-400'))} 
+                        transition-all hover:-translate-y-1 hover:shadow-md" id="app-${app.id}">
+                        <div class="flex justify-between items-start gap-4">
+                            <div class="flex-grow">
+                                <div class="flex items-center flex-wrap gap-2 mb-3">
+                                    <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider 
+                                        ${app.status === 'Accepted' ? 'bg-green-100 text-green-800' :
+                        (app.status === 'Rejected' ? 'bg-red-100 text-red-800' :
+                            (app.status === 'Cancelled' ? 'bg-gray-100 text-gray-800' : 'bg-orange-100 text-orange-800'))}">
+                                        ${app.status === 'Accepted' ? 'Confirmed' :
+                        (app.status === 'Rejected' ? 'Rejected' :
+                            (app.status === 'Cancelled' ? 'Cancelled' : 'Pending'))}
+                                    </span>
+                                    <span class="text-xs text-gray-400 font-mono tracking-tighter bg-gray-50 px-2 py-1 rounded">REF:FP-${app.id.toString().padStart(4, '0')}</span>
+                                </div>
+                                <h3 class="text-xl font-extrabold text-[#0f3715] mb-4">${app.doctor_name}</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="flex items-center gap-3 text-[#2c4c32] bg-[#f5f9f6] p-3 rounded-xl border border-black/5">
+                                        <div class="bg-white w-10 h-10 rounded-lg flex items-center justify-center shadow-sm">
+                                            <i class="fa fa-calendar text-[#0f3715]"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-[10px] uppercase font-bold text-gray-400 leading-none mb-1">Date</p>
+                                            <p class="font-semibold text-sm leading-none">${new Date(app.appointment_date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })}</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-[#2c4c32] bg-[#f5f9f6] p-3 rounded-xl border border-black/5">
+                                        <div class="bg-white w-10 h-10 rounded-lg flex items-center justify-center shadow-sm">
+                                            <i class="fa fa-clock-o text-[#0f3715]"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-[10px] uppercase font-bold text-gray-400 leading-none mb-1">Time Slot</p>
+                                            <p class="font-semibold text-sm leading-none">${app.appointment_time}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                ${app.notes ? `
+                                <div class="mt-4 p-4 bg-gray-50/50 rounded-xl text-sm italic text-gray-600 border border-gray-100 italic relative">
+                                    <span class="absolute -top-3 left-3 bg-white px-2 py-1 rounded text-[10px] font-bold text-gray-300 border border-gray-100 uppercase tracking-widest">User Notes</span>
+                                    "${app.notes}"
+                                </div>` : ''}
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                ${app.status !== 'Cancelled' && app.status !== 'Rejected' ? `
+                                <button onclick="cancelAppointment(${app.id})" class="text-gray-400 hover:text-red-500 transition-all p-2 hover:bg-red-50 rounded-xl flex items-center gap-2" title="Notify Doctor of Cancellation">
+                                    <i class="fa fa-times-circle text-xl"></i>
+                                    <span class="text-xs font-bold uppercase">Cancel</span>
+                                </button>
+                                ` : ''}
+                                <button onclick="removeRecord(${app.id})" class="text-gray-400 hover:text-gray-700 transition-all p-2 hover:bg-gray-100 rounded-xl flex items-center gap-2" title="Remove from My History">
+                                    <i class="fa fa-trash text-xl"></i>
+                                    <span class="text-xs font-bold uppercase">Delete</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+            } catch (err) {
+                console.error('Failed to load appointments:', err);
+                loadingDiv.innerHTML = `
+                    <div class="bg-red-50 text-red-700 p-6 rounded-2xl border border-red-100 flex flex-col items-center">
+                        <i class="fa fa-wifi text-3xl mb-3 opacity-50"></i>
+                        <p class="font-bold">Connection Failed</p>
+                        <p class="text-sm mb-4">We couldn't reach the server. Please ensure the backend is running.</p>
+                        <button onclick="loadMyAppointments()" class="bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-bold">Retry Connection</button>
+                    </div>`;
+            }
+        }
+
+        async function cancelAppointment(id) {
+            if (!confirm('Are you sure you want to cancel this appointment? Your doctor will be notified.')) return;
+
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/appointments/${id}/status?status=Cancelled`, {
+                    method: 'PATCH'
+                });
+
+                if (response.ok) {
+                    loadMyAppointments();
+                } else {
+                    alert('Failed to cancel appointment');
+                }
+            } catch (err) {
+                alert('Connection error while cancelling');
+            }
+        }
+
+        async function removeRecord(id) {
+            if (!confirm('Remove this record from your history?')) return;
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/appointments/${id}`, {
+                    method: 'DELETE'
+                });
+                if (response.ok) {
+                    loadMyAppointments();
+                }
+            } catch (err) {
+                alert('Connection error');
+            }
+        }
+
+        loadMyAppointments();
+    </script>
+</body>
+
+</html>

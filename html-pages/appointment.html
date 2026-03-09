@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Freshpath website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="m-0 p-0 box-border bg-[#f5f9f6] text-[#0f3715] leading-[1.6] flex flex-col min-h-screen">
+    <nav class="bg-white py-4 sticky top-0 z-50 border-b border-[#0000000d]">
+        <div class="flex justify-between items-center px-5 mx-auto max-w-7xl">
+            <a href="../index.html" class="text-2xl font-extrabold flex items-center gap-2 text-[#0f3715]">
+                <img src="../assests/freshpath_logo.jpg" class="w-10 h-auto sm:w-12" alt="FreshPath Logo" />
+                FreshPath
+            </a>
+
+            <button onclick="toggleMobileMenu()" class="block md:hidden text-[#0f3715] focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+
+            <div class="hidden md:flex items-center">
+                <a class="bg-[#0f3715] text-white py-2.5 px-6 rounded-xl font-semibold text-sm transition-all hover:-translate-y-[2px]"
+                    href="../index.html">Sign Out</a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-[#0000000d] px-5 py-6">
+            <div class="flex flex-col gap-4">
+                <a class="font-medium text-[#0f3715]" href="./my-plan.html"><i class="fa fa-calendar mr-2"></i> My
+                    Plan</a>
+                <a class="font-medium text-[#0f3715]" href="./Habit-Tracker.html"><i class="fa fa-check mr-2"></i> Habit
+                    Tracker</a>
+                <a class="font-medium text-[#0f3715]" href="./progress.html"><i class="fa fa-area-chart mr-2"></i>
+                    Progress</a>
+                <a class="font-medium text-[#000000]" href="./appointment.html"><i class="fa fa-stethoscope mr-2"></i>
+                    Appointment</a>
+                <a class="font-medium text-[#0f3715]" href="./my-appointments.html"><i class="fa fa-list-alt mr-2"></i>
+                    My Appointments</a>
+                <a class="font-medium text-[#0f3715]" href="./contact.html"><i class="fa fa-phone mr-2"></i> Contact</a>
+                <hr class="border-[#0000000d]">
+                <a class="py-3 px-6 text-center bg-[#0f3715] text-white rounded-xl font-medium"
+                    href="../index.html">Sign Out</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+
+    <div class="py-6 md:py-8 px-4 md:px-0 min-h-[calc(100vh-140px)] w-full max-w-[1200px] mx-auto box-border">
+        <div class="grid grid-cols-1 md:grid-cols-[250px_1fr] gap-8 items-start">
+            <aside class="hidden md:block bg-white p-6 rounded-2xl shadow-[0_2px_8_rgba(0,0,0,0.05)] h-fit">
+                <ul class="list-none">
+                    <li class="mb-2">
+                        <a class="text-[#0f3715] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./my-plan.html">
+                            <span class="ml-3"> <i class="fa fa-calendar"></i> My Plan</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="text-[#2c4c32] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./Habit-Tracker.html">
+                            <span class="ml-3"> <i class="fa fa-check"></i> Habit Tracker</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="text-[#2c4c32] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./progress.html">
+                            <span class="ml-3"> <i class="fa fa-area-chart"></i> Progress</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class=" bg-[#ddffd8] text-[#2c4c32] flex items-center py-3 px-6 rounded-xl font-medium transition-all"
+                            href="./appointment.html">
+                            <span class="ml-3"> <i class="fa fa-stethoscope"></i> Appointment</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="text-[#2c4c32] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./my-appointments.html">
+                            <span class="ml-3"> <i class="fa fa-list-alt"></i> My Appointments</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="text-[#2c4c32] flex items-center py-3 px-6 rounded-xl font-medium transition-all hover:bg-[#f5f9f6]"
+                            href="./contact.html">
+                            <span class="ml-3"> <i class="fa fa-phone"></i> Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+            <main class="text-[#0f3715] leading-[1.6]">
+                <div class="mb-8 flex items-center justify-between">
+                    <h2 class="font-bold leading-[1.2] text-[#0f3715]">Consult a Specialist</h2>
+                    <p class="text-[#2c4c32]">Book a session with our certified psychologists.</p>
+                </div>
+                <div id="doctorGrid"
+                    class="grid gap-6 [grid-template-columns:repeat(auto-fill,minmax(220px,1fr))] text-[#0f3715] leading-[1.6]">
+                    <!-- Doctors will be loaded here dynamically -->
+
+                </div>
+            </main>
+        </div>
+    </div>
+    <footer class="mt-auto text-center bg-[#0f3715] py-8 px-0 text-white">
+        <div class="py-0 px-5 my-0 mx-auto max-w-7xl">
+            <p>2026 Fresh Path. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="bookingModal" class="fixed inset-0 bg-black bg-opacity-50 z-[1000] hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl w-full max-w-md overflow-hidden shadow-2xl transform transition-all">
+            <div class="bg-[#0f3715] p-6 text-white flex justify-between items-center">
+                <h3 class="text-xl font-bold">Book Appointment</h3>
+                <button onclick="closeBooking()" class="text-white hover:text-[#ddffd8] transition-colors">
+                    <i class="fa fa-times text-xl"></i>
+                </button>
+            </div>
+            <form id="appointmentForm" class="p-6 space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-[#0f3715] mb-1">Specialist</label>
+                    <input type="text" id="doctorName" readonly
+                        class="w-full p-3 rounded-xl border border-gray-200 bg-gray-50 text-[#0f3715] font-medium focus:outline-none" />
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-[#0f3715] mb-1">Preferred Date</label>
+                        <input id="appointment_date" type="date" required
+                            class="w-full p-3 rounded-xl border border-gray-200 focus:border-[#0f3715] focus:outline-none" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-[#0f3715] mb-1">Preferred Time</label>
+                        <input id="appointment_time" type="time" required
+                            class="w-full p-3 rounded-xl border border-gray-200 focus:border-[#0f3715] focus:outline-none" />
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-[#0f3715] mb-1">Additional Notes</label>
+                    <textarea id="notes"
+                        class="w-full p-3 rounded-xl border border-gray-200 focus:border-[#0f3715] focus:outline-none min-h-[100px]"
+                        placeholder="Tell us about your concern..."></textarea>
+                </div>
+                <div class="flex gap-4 pt-4">
+                    <button type="button" onclick="closeBooking()"
+                        class="flex-1 py-3 px-6 rounded-xl font-semibold text-[#0f3715] border border-[#0f3715] hover:bg-gray-50 transition-colors">Cancel</button>
+                    <button type="submit"
+                        class="flex-1 py-3 px-6 rounded-xl font-semibold text-white bg-[#0f3715] hover:shadow-lg transition-all">Book
+                        Now</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('bookingModal');
+        const doctorInput = document.getElementById('doctorName');
+        const form = document.getElementById('appointmentForm');
+
+        function openBooking(doctorName) {
+            doctorInput.value = doctorName;
+            // Set minimum date to today so past dates cannot be selected
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('appointment_date').min = today;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBooking() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+            form.reset();
+        }
+
+        async function loadDoctors() {
+            console.log("Loading doctors...");
+            try {
+                const response = await fetch('http://127.0.0.1:8000/doctors/');
+                console.log("API Response status:", response.status);
+                const doctors = await response.json();
+                console.log("Doctors fetched:", doctors);
+                const grid = document.getElementById('doctorGrid');
+
+                if (doctors.length === 0) {
+                    grid.innerHTML = '<p class="col-span-full text-center py-10 text-gray-500">No registered specialists available yet.</p>';
+                    return;
+                }
+
+                grid.innerHTML = doctors.map(doc => `
+                    <div class="bg-white rounded-xl p-4 text-center transition-all duration-300 shadow-[0_4px_12px_rgba(74,124,89,0.2)]">
+                        <img src="${doc.profile_image || 'https://images.unsplash.com/photo-1559839734-2b71f1536780?auto=format&fit=crop&q=80&w=200&h=200'}"
+                            alt="${doc.name}" class="w-full aspect-square object-cover rounded-lg mb-4 shadow-sm">
+                        <div>
+                            <h3 class="font-bold leading-[1.2] text-lg text-[#0f3715] mb-1">${doc.name}</h3>
+                            <p class="text-[#2c4c32] text-sm font-semibold mb-2">${doc.specialization || 'Clinical Psychologist'}</p>
+                            <p class="text-xs text-[#0f3715] mb-4">Expert in mental wellness and behavior change.</p>
+                        </div>
+                        <button
+                            class="w-full bg-[#0f3715] text-white text-sm font-semibold py-2 px-4 rounded-lg transition-all hover:bg-[#1a4d1f] shadow-md"
+                            onclick="openBooking('${doc.name}')">Book Now</button>
+                    </div>
+                `).join('');
+            } catch (err) {
+                console.error('Failed to load doctors:', err);
+            }
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeBooking();
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Extra guard: block past dates
+            const selectedDate = document.getElementById('appointment_date').value;
+            const today = new Date().toISOString().split('T')[0];
+            if (selectedDate < today) {
+                alert('Please select today or a future date for your appointment.');
+                return;
+            }
+
+            // Get user info from localStorage
+            const userJson = localStorage.getItem('user');
+            const user = userJson ? JSON.parse(userJson) : null;
+
+            const data = {
+                user_id: user ? user.id : null,
+                user_name: user ? user.name : 'Guest User',
+                doctor_name: doctorInput.value,
+                appointment_date: document.getElementById('appointment_date').value,
+                appointment_time: document.getElementById('appointment_time').value,
+                notes: document.getElementById('notes').value
+            };
+
+            try {
+                const response = await fetch('http://127.0.0.1:8000/appointments/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                if (response.ok) {
+                    alert('Appointment request submitted successfully!');
+                    closeBooking();
+                } else {
+                    alert('Failed to submit appointment request');
+                }
+            } catch (err) {
+                alert('Connection error');
+            }
+        });
+
+        // Initialize
+        loadDoctors();
+    </script>
+</body>
+
+</html>

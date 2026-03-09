@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshPath</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="m-0 p-0 box-border">
+    <nav class="bg-white py-4 sticky top-0 z-50 border-b border-[#0000000d]">
+        <div class="flex justify-between items-center px-5 mx-auto max-w-7xl">
+            <a href="../index.html" class="text-2xl font-extrabold flex items-center gap-2 text-[#0f3715]">
+                <img src="../assests/freshpath_logo.jpg" class="w-10 h-auto sm:w-12" alt="FreshPath Logo" />
+                FreshPath
+            </a>
+        </div>
+    </nav>
+    <div
+        class="min-h-[calc(100vh-80px-100px)] flex items-center justify-center p-8 bg-[radial-gradient(circle_at_top_right,#ddffd8_0%,transparent_40%),radial-gradient(circle_at_bottom_left,#ffe4e1_0%,transparent_40%)]">
+        <div class="w-full max-w-md bg-[#FFFFFF] p-10 rounded-2xl shadow-[0_8px_24px_rgba(0,0,0,0.08)]">
+            <div class="text-center mb-8">
+                <h2 class="mb-2 text-3xl text-[#0f3715] font-bold leading-[1.2]">Begin Your Journey</h2>
+                <p class="text-[#0f3715]">Create your personal growth space</p>
+            </div>
+            <form id="signupForm">
+                <div class="mb-6">
+                    <label class=" block font-medium text-[#2c4c32] mb-2">Full Name</label>
+                    <input
+                        class="w-full py-3 px-4 border-2 border-[#c6eacb] text-base bg-[#FAFAFA] transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] rounded-xl"
+                        type="text" id="fullName" placeholder="Jhon" required>
+                </div>
+                <div class="mb-6">
+                    <label class=" block font-medium text-[#2c4c32] mb-2">Email Address</label>
+                    <input
+                        class="w-full py-3 px-4 border-2 border-[#c6eacb] text-base bg-[#FAFAFA] transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] rounded-xl"
+                        type="email" id="Email" placeholder="Your@example.com" required>
+                </div>
+                <div class="mb-6">
+                    <label class=" block font-medium text-[#2c4c32] mb-2">Password</label>
+                    <input
+                        class="w-full py-3 px-4 border-2 border-[#c6eacb] text-base bg-[#FAFAFA] transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] rounded-xl"
+                        type="password" id="password" placeholder="Create a strong password" required>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+                    <div class="mb-4 sm:mb-6">
+                        <label class=" block font-medium text-[#2c4c32] mb-2">Age</label>
+                        <input
+                            class="w-full py-3 px-4 border-2 border-[#c6eacb] text-base bg-[#FAFAFA] transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] rounded-xl"
+                            type="number" id="age" placeholder="e.g., 25">
+                    </div>
+                    <div class="mb-4 sm:mb-6">
+                        <label class=" block font-medium text-[#2c4c32] mb-2">Phone Number</label>
+                        <input
+                            class="w-full py-3 px-4 border-2 border-[#c6eacb] text-base bg-[#FAFAFA] transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] rounded-xl"
+                            type="tel" id="phone" placeholder="e.g., 9876543210">
+                    </div>
+                </div>
+                <!-- ... hobby input ... -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+                    <div class="mb-4 sm:mb-6">
+                        <label class=" block font-medium text-[#2c4c32] mb-2">Years Smoked</label>
+                        <input
+                            class="w-full py-3 px-4 border-2 border-[#c6eacb] text-base bg-[#FAFAFA] transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] rounded-xl"
+                            type="number" id="years-smoked" placeholder="e.g, 5">
+                    </div>
+                    <div class="mb-4 sm:mb-6">
+                        <label class=" block font-medium text-[#2c4c32] mb-2">Cigarettes per Day</label>
+                        <input
+                            class="w-full py-3 px-4 border-2 border-[#c6eacb] text-base bg-[#FAFAFA] transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] rounded-xl"
+                            type="number" id="daily-count" placeholder="e.g, 2">
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label class=" block font-medium text-[#2c4c32] mb-2">Target Quit Date</label>
+                    <input
+                        class="w-full py-3 px-4 border-2 border-[#c6eacb] text-base bg-[#FAFAFA] transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] rounded-xl"
+                        type="date" id="date">
+                </div>
+                <div class="mb-6">
+                    <label class=" block font-medium text-[#2c4c32] mb-2">Reason of Quitting</label>
+                    <textarea
+                        class="w-full py-3 px-4 border-2 border-[#c6eacb] text-base bg-[#FAFAFA] transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] rounded-xl"
+                        id="reason" rows="2" placeholder="e.g, My Family, Health"></textarea>
+                </div>
+                <div class="mb-6">
+                    <label class=" block font-medium text-[#2c4c32] mb-2">Triggers</label>
+                    <textarea
+                        class="w-full py-3 px-4 border-2 border-[#c6eacb] text-base bg-[#FAFAFA] transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] rounded-xl"
+                        id="Triggers" rows="2" placeholder="e.g, Friends"></textarea>
+                </div>
+                <button id="signupBtn"
+                    class="bg-[#0f3715] w-full text-white shadow-[0_4px_15px_rgba(74,124,89,0.3)] inline-flex items-center justify-center py-3 px-6 text-base font-semibold rounded-xl transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] cursor-pointer"
+                    type="submit">Create Account</button>
+            </form>
+            <div class="text-center mt-6 text-[#2c4c32] text-sm">
+                "Already a member?"
+                <a class="text-[#0f3715] font-semibold" href="./user-login.html">Log in here</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const data = {
+                name: document.getElementById('fullName').value,
+                email: document.getElementById('Email').value,
+                password: document.getElementById('password').value,
+                age: parseInt(document.getElementById('age').value) || null,
+                phone: document.getElementById('phone').value,
+                activity: document.getElementById('hobby').value,
+                years_smoked: parseInt(document.getElementById('years-smoked').value) || 0,
+                cigarettes_per_day: parseInt(document.getElementById('daily-count').value) || 0,
+                target_quit_date: document.getElementById('date').value || null,
+                reason_quitting: document.getElementById('reason').value,
+                triggers: document.getElementById('Triggers').value
+            };
+
+            try {
+                const response = await fetch('http://127.0.0.1:8000/users/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                if (response.ok) {
+                    alert('Signup Success! Please Login');
+                    window.location.href = './user-login.html';
+                } else {
+                    const err = await response.json();
+                    alert(err.detail || 'Signup Failed');
+                }
+            } catch (err) {
+                alert('Connection error');
+            }
+        });
+    </script>
+</body>
+
+</html>

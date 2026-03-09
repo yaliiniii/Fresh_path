@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FreshPath</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="m-0 p-0 box-border">
+  <nav class="bg-white py-4 sticky top-0 z-50 border-b border-[#0000000d]">
+    <div class="flex justify-between items-center px-5 mx-auto max-w-7xl">
+      <a href="../index.html" class="text-2xl font-extrabold flex items-center gap-2 text-[#0f3715]">
+        <img src="../assests/freshpath_logo.jpg" class="w-10 h-auto sm:w-12" alt="FreshPath Logo" />
+        FreshPath
+      </a>
+    </div>
+  </nav>
+  <div
+    class="min-h-[calc(100vh-80px-100px)] flex items-center justify-center p-8 bg-[radial-gradient(circle_at_top_right,#ddffd8_0%,transparent_40%),radial-gradient(circle_at_bottom_left,#ffe4e1_0%,transparent_40%)]">
+    <div class="w-full max-w-md bg-[#FFFFFF] p-10 rounded-2xl shadow-[0_8px_24px_rgba(0,0,0,0.08)]">
+      <div class="text-center mb-8">
+        <h2 class="mb-2 text-3xl text-[#0f3715] font-bold leading-[1.2]">Specialist Portal</h2>
+        <p class="text-[#0f3715]">Manage appointments and patients</p>
+      </div>
+      <form id="doctorLoginForm">
+        <div class="mb-6">
+          <label class=" block font-medium text-[#2c4c32] mb-2">Email Address</label>
+          <input
+            class="w-full py-3 px-4 border-2 border-[#c6eacb] text-base bg-[#FAFAFA] transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] rounded-xl"
+            type="email" id="email" placeholder="dr.name@example.com" required>
+        </div>
+        <div class="mb-6">
+          <label class=" block font-medium text-[#2c4c32] mb-2">Password</label>
+          <input
+            class="w-full py-3 px-4 border-2 border-[#c6eacb] text-base bg-[#FAFAFA] transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] rounded-xl"
+            type="password" id="password" placeholder="your password" required>
+        </div>
+        <button
+          class="bg-[#0f3715] w-full text-white shadow-[0_4px_15px_rgba(74,124,89,0.3)] inline-flex items-center justify-center py-3 px-6 text-base font-semibold rounded-xl transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] cursor-pointer"
+          type="submit">Log In to Workstation</button>
+      </form>
+      <script>
+        document.getElementById('doctorLoginForm').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+
+          try {
+            const response = await fetch('http://127.0.0.1:8000/doctors/login', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email, password })
+            });
+            if (response.ok) {
+              const data = await response.json();
+              localStorage.setItem('doctor', JSON.stringify(data));
+              alert('Login successful! Welcome Dr. ' + data.name);
+              window.location.href = './doctor-dashboard.html';
+            } else {
+              const err = await response.json();
+              alert('Login failed: ' + (err.detail || 'Invalid credentials'));
+            }
+          } catch (err) {
+            alert('Connection error');
+          }
+        });
+      </script>
+      <div class="text-center mt-6 text-[#2c4c32] text-sm">
+        "New specialist?"
+        <a class="text-[#0f3715] font-semibold" href="./doctor-signup.html">Apply to Join</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

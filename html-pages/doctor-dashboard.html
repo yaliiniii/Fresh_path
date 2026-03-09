@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <thead>
+        <tr class="text-left border-2 border-[#c6eacb]">
+            <th class="p-4">Patient Name</th>
+            <th class="p-4">Date & Time</th>
+            <th class="p-4">Actions</th>
+        </tr>
+    </thead>
+    <tbody id="appointmentTableBody">
+        <!-- Data will be loaded here -->
+    </tbody>
+    </table>
+    </div>
+    </div>
+    <script>
+        async function loadDashboardData() {
+            try {
+                // Get doctor info from localStorage
+                const doctorJson = localStorage.getItem('doctor');
+                const loggedInDoctor = doctorJson ? JSON.parse(doctorJson) : null;
+
+                if (loggedInDoctor) {
+                    document.getElementById('doctorWelcome').textContent = `Welcome, Dr. ${loggedInDoctor.name}`;
+                }
+
+                const resp = await fetch('http://127.0.0.1:8000/appointments/');
+                let appointments = await resp.json();
+
+                // Filter appointments for this doctor if logged in
+                if (loggedInDoctor) {
+                    appointments = appointments.filter(app => app.doctor_name === loggedInDoctor.name);
+                }
+
+                document.getElementById('totalBookings').textContent = appointments.length;
+
+                // Calculate today's sessions
+                const today = new Date().toISOString().split('T')[0];
+                const todaysCount = appointments.filter(app => app.appointment_date === today && app.status !== 'Cancelled').length;
+                document.getElementById('todaysSessions').textContent = todaysCount;
+
+                // Pending requests
+                const pendingCount = appointments.filter(app => app.status === 'Pending').length;
+                document.getElementById('pendingRequests').textContent = pendingCount;
+
+                const tableBody = document.getElementById('appointmentTableBody');
+                tableBody.innerHTML = '';
+
+                appointments.forEach(app => {
+                    const row = document.createElement('tr');
+                    row.className = 'border-b border-[#eee]';
+                    row.innerHTML = `
+                        <td class="p-4 font-bold">
+                            ${app.user_name || 'Anonymous Patient'}
+                            <div class="text-xs font-normal 
+                                ${app.status === 'Accepted' ? 'text-green-600' :
+                            (app.status === 'Rejected' ? 'text-red-500' :
+                                (app.status === 'Cancelled' ? 'text-gray-400 font-bold italic' : 'text-orange-500'))}">
+                                Status: ${app.status === 'Cancelled' ? 'CANCELLED BY PATIENT' : app.status}
+                            </div>
+                        </td>
+                        <td class="p-4 ${app.status === 'Cancelled' ? 'line-through opacity-50' : ''}">
+                            ${app.appointment_date} at ${app.appointment_time}
+                        </td>
+                        <td class="p-4 flex gap-2">
+                            ${app.status === 'Pending' ? `
+                                <button onclick="updateStatus(${app.id}, 'Accepted')" class="bg-[#C8E6C9] text-[#2E7D32] py-1.5 px-3 text-sm font-bold rounded-xl hover:bg-[#b8d6b9]">Accept</button>
+                                <button onclick="updateStatus(${app.id}, 'Rejected')" class="bg-[#FFEBEE] text-[#C62828] py-1.5 px-3 text-sm font-bold rounded-xl hover:bg-[#efdbde]">Reject</button>
+                            ` : (app.status === 'Cancelled' ? `
+                                <span class="text-gray-400 font-bold text-xs py-1.5 px-3 border border-gray-200 rounded-lg">CANCELED</span>
+                            ` : `
+                                <span class="${app.status === 'Accepted' ? 'text-green-600' : 'text-red-600'} font-bold text-sm py-1.5 px-3">
+                                    ${app.status === 'Accepted' ? '✓ Accepted' : '✗ Rejected'}
+                                </span>
+                            `)}
+                            <button onclick="deleteApp(${app.id})" class="text-gray-400 hover:text-red-600 p-1.5 ml-auto" title="Remove Record">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            } catch (err) {
+                console.error("Failed to load dashboard data", err);
+            }
+        }
+
+        async function deleteApp(id) {
+            if (confirm('Are you sure you want to cancel this appointment?')) {
+                await fetch(`http://127.0.0.1:8000/appointments/${id}`, { method: 'DELETE' });
+                loadDashboardData();
+            }
+        }
+
+        async function updateStatus(id, newStatus) {
+            try {
+                if (newStatus === 'Rejected') {
+                    // Delete the appointment when rejected
+                    if (!confirm('Reject and delete this appointment request?')) return;
+                    const response = await fetch(`http://127.0.0.1:8000/appointments/${id}`, {
+                        method: 'DELETE'
+                    });
+                    if (response.ok) {
+                        loadDashboardData();
+                    } else {
+                        alert('Failed to reject appointment');
+                    }
+                } else {
+                    // Accept: update status to Accepted
+                    const response = await fetch(`http://127.0.0.1:8000/appointments/${id}/status?status=${newStatus}`, {
+                        method: 'PATCH'
+                    });
+                    if (response.ok) {
+                        loadDashboardData();
+                    } else {
+                        alert('Failed to update status');
+                    }
+                }
+            } catch (err) {
+                console.error('Error updating status:', err);
+            }
+        }
+
+        loadDashboardData();
+    </script>
+    <footer class="mt-auto text-center bg-[#0f3715] py-8 px-0 text-white">
+        <div class="py-0 px-5 my-0 mx-auto max-w-7xl">
+            <p>2026 Fresh Path. All rights reserved.</p>
+        </div>
+    </footer>
+    </body>
+
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshPath – Admin Panel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="m-0 p-0 box-border bg-[#f5f9f6] text-[#0f3715] leading-[1.6] flex flex-col min-h-screen">
+    <nav class="bg-white py-4 sticky top-0 z-50 border-b border-[#0000000d]">
+        <div class="flex justify-between items-center px-5 mx-auto max-w-7xl">
+            <a href="../index.html" class="text-2xl font-extrabold flex items-center gap-2 text-[#0f3715]">
+                <img src="../assests/freshpath_logo.jpg" class="w-10 h-auto sm:w-12" alt="FreshPath Logo" />
+                FreshPath
+            </a>
+
+            <div class="flex items-center gap-3">
+                <span
+                    class="hidden sm:flex bg-[#ddffd8] text-[#0f3715] py-2 px-4 rounded-xl text-sm font-semibold items-center gap-2">
+                    <i class="fa fa-shield"></i> Admin Panel
+                </span>
+                <button onclick="adminLogout()" class="bg-[#0f3715] text-white py-2.5 px-6 rounded-xl font-semibold text-sm transition-all hover:-translate-y-[2px]">
+                    Sign Out
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="py-6 md:py-8 px-4 md:px-0 min-h-[calc(100vh-140px)] w-full max-w-[1200px] mx-auto box-border">
+        <!-- Tab Navigation -->
+        <div class="flex flex-wrap gap-2 mb-8 overflow-x-auto pb-2 scrollbar-hide">
+            <button id="tabPending" onclick="switchTab('pending')"
+                class="py-3 px-6 rounded-xl font-semibold text-base transition-all duration-300 bg-[#0f3715] text-white shadow-md">
+                <i class="fa fa-clock-o mr-2"></i>Pending Approval
+            </button>
+            <button id="tabApproved" onclick="switchTab('approved')"
+                class="py-3 px-6 rounded-xl font-semibold text-base transition-all duration-300 bg-white text-[#0f3715] border border-[#c6eacb]">
+                <i class="fa fa-check-circle mr-2"></i>Approved Doctors
+            </button>
+            <button id="tabMessages" onclick="switchTab('messages')"
+                class="py-3 px-6 rounded-xl font-semibold text-base transition-all duration-300 bg-white text-[#0f3715] border border-[#c6eacb]">
+                <i class="fa fa-envelope mr-2"></i>User Messages
+            </button>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+            <div class="bg-white rounded-xl p-5 shadow-[0_2px_8px_rgba(0,0,0,0.05)] flex items-center gap-4">
+                <div class="bg-[#fff3cd] p-3 rounded-xl">
+                    <i class="fa fa-hourglass-half text-[#856404] text-xl"></i>
+                </div>
+                <div>
+                    <p class="text-sm text-[#2c4c32]">Pending</p>
+                    <p id="pendingCount" class="text-2xl font-bold text-[#0f3715]">0</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-[0_2px_8px_rgba(0,0,0,0.05)] flex items-center gap-4">
+                <div class="bg-[#ddffd8] p-3 rounded-xl">
+                    <i class="fa fa-check-circle text-[#0f3715] text-xl"></i>
+                </div>
+                <div>
+                    <p class="text-sm text-[#2c4c32]">Approved</p>
+                    <p id="approvedCount" class="text-2xl font-bold text-[#0f3715]">0</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-[0_2px_8px_rgba(0,0,0,0.05)] flex items-center gap-4">
+                <div class="bg-[#e1f5fe] p-3 rounded-xl">
+                    <i class="fa fa-envelope text-[#01579b] text-xl"></i>
+                </div>
+                <div>
+                    <p class="text-sm text-[#2c4c32]">Messages</p>
+                    <p id="messageCount" class="text-2xl font-bold text-[#0f3715]">0</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Doctor Cards Grid -->
+        <div id="doctorGrid" class="grid gap-6 [grid-template-columns:repeat(auto-fill,minmax(320px,1fr))]">
+            <!-- Cards loaded dynamically -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden text-center py-16">
+            <i class="fa fa-inbox text-6xl text-[#c6eacb] mb-4"></i>
+            <p class="text-xl font-semibold text-[#2c4c32]" id="emptyMessage">No pending applications</p>
+        </div>
+    </div>
+
+    <!-- Reply Modal -->
+    <div id="replyModal" class="fixed inset-0 bg-black/50 hidden z-[200] flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in duration-300">
+            <div class="p-6 border-b border-[#f0f0f0] flex justify-between items-center bg-[#f5f9f6]">
+                <h3 class="font-bold text-xl text-[#0f3715]">Reply to Message</h3>
+                <button onclick="closeReplyModal()" class="text-[#2c4c32] hover:text-red-600 transition-colors">
+                    <i class="fa fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div id="originalMessage" class="mb-4 p-4 bg-[#f5f9f6] rounded-xl text-sm border border-[#c6eacb]">
+                    <!-- Original message detail shown here -->
+                </div>
+                <label class="block text-sm font-semibold text-[#0f3715] mb-2">Your Reply</label>
+                <textarea id="replyText" rows="5"
+                    class="w-full p-4 border-2 border-[#c6eacb] rounded-xl focus:outline-none focus:border-[#0f3715] transition-colors"
+                    placeholder="Type your reply here..."></textarea>
+                <div class="mt-6 flex gap-3">
+                    <button onclick="closeReplyModal()"
+                        class="flex-1 py-3 px-6 rounded-xl font-semibold text-[#0f3715] border border-[#c6eacb] hover:bg-gray-50 transition-colors">
+                        Cancel
+                    </button>
+                    <button onclick="sendReply()"
+                        class="flex-1 py-3 px-6 rounded-xl font-semibold bg-[#0f3715] text-white shadow-lg hover:shadow-xl transition-all">
+                        Send Reply
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-auto text-center bg-[#0f3715] py-8 px-0 text-white">
+        <div class="py-0 px-5 my-0 mx-auto max-w-7xl">
+            <p>2026 Fresh Path. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const API_BASE = 'http://127.0.0.1:8000';
+        let allDoctors = [];
+        let allMessages = [];
+        let currentTab = 'pending';
+        let activeMessageId = null;
+
+        // Session Check
+        const adminToken = localStorage.getItem('admin_token');
+        if (!adminToken) {
+            window.location.href = './user-login.html';
+        }
+
+        function adminLogout() {
+            localStorage.removeItem('admin_token');
+            localStorage.removeItem('admin_email');
+            window.location.href = '../index.html';
+        }
+
+        async function authenticatedFetch(url, options = {}) {
+            const token = localStorage.getItem('admin_token');
+            const headers = {
+                ...options.headers,
+                'Authorization': `Bearer ${token}`
+            };
+
+            const response = await fetch(url, { ...options, headers });
+            
+            if (response.status === 401) {
+                adminLogout();
+                return;
+            }
+            
+            return response;
+        }
+
+        function switchTab(tab) {
+            currentTab = tab;
+            const tabPending = document.getElementById('tabPending');
+            const tabApproved = document.getElementById('tabApproved');
+            const tabMessages = document.getElementById('tabMessages');
+
+            [tabPending, tabApproved, tabMessages].forEach(t => {
+                t.className = 'py-3 px-6 rounded-xl font-semibold text-base transition-all duration-300 bg-white text-[#0f3715] border border-[#c6eacb]';
+            });
+
+            const activeTab = document.getElementById(`tab${tab.charAt(0).toUpperCase() + tab.slice(1)}`);
+            activeTab.className = 'py-3 px-6 rounded-xl font-semibold text-base transition-all duration-300 bg-[#0f3715] text-white shadow-md';
+
+            if (tab === 'messages') {
+                renderMessages();
+            } else {
+                renderDoctors();
+            }
+        }
+
+        function renderDoctors() {
+            const grid = document.getElementById('doctorGrid');
+            const emptyState = document.getElementById('emptyState');
+            const emptyMessage = document.getElementById('emptyMessage');
+
+            const filtered = allDoctors.filter(doc =>
+                currentTab === 'pending' ? !doc.is_approved : doc.is_approved
+            );
+
+            if (filtered.length === 0) {
+                grid.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                emptyMessage.textContent = currentTab === 'pending'
+                    ? 'No pending applications'
+                    : 'No approved doctors yet';
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            grid.classList.remove('hidden');
+
+            grid.innerHTML = filtered.map(doc => `
+                <div class="bg-white rounded-2xl overflow-hidden shadow-[0_4px_12px_rgba(74,124,89,0.12)] transition-all duration-300 hover:shadow-[0_8px_24px_rgba(74,124,89,0.2)] hover:-translate-y-1">
+                    <div class="flex items-center gap-4 p-5 border-b border-[#f0f0f0]">
+                        <img src="${doc.profile_image || 'https://images.unsplash.com/photo-1559839734-2b71f1536780?auto=format&fit=crop&q=80&w=100&h=100'}"
+                            alt="${doc.name}"
+                            class="w-16 h-16 rounded-full object-cover border-2 ${doc.is_approved ? 'border-[#0f3715]' : 'border-[#f0c040]'}">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg text-[#0f3715] mb-0">${doc.name}</h3>
+                            <p class="text-sm text-[#2c4c32]">${doc.specialization || 'Not specified'}</p>
+                        </div>
+                        <span class="py-1 px-3 rounded-full text-xs font-semibold ${doc.is_approved
+                    ? 'bg-[#ddffd8] text-[#0f3715]'
+                    : 'bg-[#fff3cd] text-[#856404]'}">
+                            ${doc.is_approved ? 'Approved' : 'Pending'}
+                        </span>
+                    </div>
+                    <div class="p-5">
+                        <div class="grid grid-cols-2 gap-3 mb-4">
+                            <div class="bg-[#f5f9f6] p-3 rounded-xl">
+                                <p class="text-xs text-[#2c4c32] mb-1">Email</p>
+                                <p class="text-sm font-medium text-[#0f3715] truncate">${doc.email}</p>
+                            </div>
+                            <div class="bg-[#f5f9f6] p-3 rounded-xl">
+                                <p class="text-xs text-[#2c4c32] mb-1">License No.</p>
+                                <p class="text-sm font-medium text-[#0f3715]">${doc.license_number}</p>
+                            </div>
+                        </div>
+                        ${!doc.is_approved ? `
+                        <div class="flex gap-3">
+                            <button onclick="approveDoctor(${doc.id})"
+                                class="flex-1 py-2.5 px-4 rounded-xl font-semibold text-sm bg-[#0f3715] text-white transition-all duration-300 hover:shadow-lg flex items-center justify-center gap-2">
+                                <i class="fa fa-check"></i> Approve
+                            </button>
+                            <button onclick="rejectDoctor(${doc.id}, '${doc.name}')"
+                                class="flex-1 py-2.5 px-4 rounded-xl font-semibold text-sm bg-white text-red-600 border border-red-200 transition-all duration-300 hover:bg-red-50 flex items-center justify-center gap-2">
+                                <i class="fa fa-times"></i> Reject
+                            </button>
+                        </div>
+                        ` : `
+                        <button onclick="rejectDoctor(${doc.id}, '${doc.name}')"
+                            class="w-full py-2.5 px-4 rounded-xl font-semibold text-sm bg-white text-red-600 border border-red-200 transition-all duration-300 hover:bg-red-50 flex items-center justify-center gap-2">
+                            <i class="fa fa-trash"></i> Remove Doctor
+                        </button>
+                        `}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderMessages() {
+            const grid = document.getElementById('doctorGrid');
+            const emptyState = document.getElementById('emptyState');
+            const emptyMessage = document.getElementById('emptyMessage');
+
+            if (allMessages.length === 0) {
+                grid.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                emptyMessage.textContent = 'No messages yet';
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            grid.classList.remove('hidden');
+
+            grid.innerHTML = allMessages.map(msg => `
+                <div class="bg-white rounded-2xl overflow-hidden shadow-[0_4px_12px_rgba(74,124,89,0.12)] transition-all duration-300 hover:shadow-[0_8px_24px_rgba(74,124,89,0.2)]">
+                    <div class="p-5 border-b border-[#f0f0f0] flex justify-between items-start">
+                        <div>
+                            <h3 class="font-bold text-[#0f3715] mb-1">${msg.name}</h3>
+                            <p class="text-sm text-[#2c4c32]"><i class="fa fa-envelope-o mr-1"></i>${msg.email}</p>
+                        </div>
+                        <span class="py-1 px-3 rounded-full text-xs font-semibold ${msg.is_replied ? 'bg-[#ddffd8] text-[#0f3715]' : 'bg-[#fff3cd] text-[#856404]'}">
+                            ${msg.is_replied ? 'Replied' : 'Pending'}
+                        </span>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-sm font-bold text-[#0f3715] mb-2">${msg.subject}</p>
+                        <p class="text-sm text-[#2c4c32] mb-4 line-clamp-3">${msg.message}</p>
+                        ${msg.is_replied ? `
+                            <div class="bg-[#f5f9f6] p-3 rounded-xl mb-4 border-l-4 border-[#0f3715]">
+                                <p class="text-xs font-bold text-[#0f3715] mb-1">Your Reply:</p>
+                                <p class="text-sm italic text-[#2c4c32]">${msg.reply_message}</p>
+                            </div>
+                        ` : ''}
+                        <div class="flex gap-2">
+                            <button onclick="openReplyModal(${msg.id})"
+                                class="flex-1 py-2.5 px-4 rounded-xl font-semibold text-sm ${msg.is_replied ? 'bg-white text-[#0f3715] border border-[#c6eacb]' : 'bg-[#0f3715] text-white'} transition-all duration-300 flex items-center justify-center gap-2">
+                                <i class="fa fa-reply"></i> ${msg.is_replied ? 'Update Reply' : 'Reply Now'}
+                            </button>
+                            <button onclick="deleteMessage(${msg.id}, '${msg.name}')"
+                                class="py-2.5 px-4 rounded-xl font-semibold text-sm bg-white text-red-600 border border-red-200 transition-all duration-300 hover:bg-red-50"
+                                title="Delete Message">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function loadDoctors() {
+            try {
+                const response = await authenticatedFetch(`${API_BASE}/admin/doctors`);
+                if (!response) return;
+                allDoctors = await response.json();
+
+                // Update stats
+                const pending = allDoctors.filter(d => !d.is_approved).length;
+                const approved = allDoctors.filter(d => d.is_approved).length;
+                document.getElementById('pendingCount').textContent = pending;
+                document.getElementById('approvedCount').textContent = approved;
+
+                if (currentTab !== 'messages') renderDoctors();
+            } catch (err) {
+                console.error('Failed to load doctors:', err);
+            }
+        }
+
+        async function loadMessages() {
+            try {
+                const response = await authenticatedFetch(`${API_BASE}/admin/contacts`);
+                if (!response) return;
+                allMessages = await response.json();
+                document.getElementById('messageCount').textContent = allMessages.length;
+                if (currentTab === 'messages') renderMessages();
+            } catch (err) {
+                console.error('Failed to load messages:', err);
+            }
+        }
+
+        function openReplyModal(id) {
+            const msg = allMessages.find(m => m.id === id);
+            if (!msg) return;
+
+            activeMessageId = id;
+            document.getElementById('originalMessage').innerHTML = `
+                <p class="font-bold mb-1">From: ${msg.name}</p>
+                <p class="mb-2 italic">"${msg.message}"</p>
+            `;
+            document.getElementById('replyText').value = msg.reply_message || '';
+            document.getElementById('replyModal').classList.remove('hidden');
+        }
+
+        function closeReplyModal() {
+            document.getElementById('replyModal').classList.add('hidden');
+            activeMessageId = null;
+        }
+
+        async function sendReply() {
+            const reply_message = document.getElementById('replyText').value.trim();
+            if (!reply_message) return alert('Please enter a reply');
+
+            try {
+                const response = await authenticatedFetch(`${API_BASE}/admin/contacts/${activeMessageId}/reply`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ reply_message })
+                });
+
+                if (response && response.ok) {
+                    closeReplyModal();
+                    loadMessages();
+                } else {
+                    alert('Failed to send reply');
+                }
+            } catch (err) {
+                alert('Connection error');
+            }
+        }
+
+        async function deleteMessage(id, name) {
+            if (!confirm(`Are you sure you want to delete the message from ${name}?`)) return;
+            try {
+                const response = await authenticatedFetch(`${API_BASE}/admin/contacts/${id}`, {
+                    method: 'DELETE'
+                });
+                if (response && response.ok) {
+                    loadMessages();
+                } else {
+                    alert('Failed to delete message');
+                }
+            } catch (err) {
+                alert('Connection error');
+            }
+        }
+
+        async function approveDoctor(id) {
+            try {
+                const response = await authenticatedFetch(`${API_BASE}/admin/doctors/${id}/approve`, {
+                    method: 'PUT'
+                });
+                if (response && response.ok) {
+                    loadDoctors();
+                } else {
+                    alert('Failed to approve doctor');
+                }
+            } catch (err) {
+                alert('Connection error');
+            }
+        }
+
+        async function rejectDoctor(id, name) {
+            if (!confirm(`Are you sure you want to reject/remove ${name}?`)) return;
+            try {
+                const response = await authenticatedFetch(`${API_BASE}/admin/doctors/${id}/reject`, {
+                    method: 'PUT'
+                });
+                if (response && response.ok) {
+                    loadDoctors();
+                } else {
+                    alert('Failed to reject doctor');
+                }
+            } catch (err) {
+                alert('Connection error');
+            }
+        }
+
+        // Initialize
+        loadDoctors();
+        loadMessages();
+    </script>
+</body>
+
+</html>
