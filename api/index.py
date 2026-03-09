@@ -25,8 +25,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include every router under /api so Vercel's rewrite (/api/* → this file)
-# works without any path stripping — FastAPI routes become /api/users/signup etc.
+# Include every router under /api
 app.include_router(users.router, prefix="/api")
 app.include_router(doctors.router, prefix="/api")
 app.include_router(admin.router, prefix="/api")
@@ -34,7 +33,19 @@ app.include_router(habits.router, prefix="/api")
 app.include_router(appointments.router, prefix="/api")
 app.include_router(contact.router, prefix="/api")
 
-
 @app.get("/api")
 def api_root():
-    return {"message": "Welcome to FreshPath API"}
+    db_status = "Unknown"
+    try:
+        # Quick check if DB is reachable
+        from sqlalchemy import text
+        with database.engine.connect() as conn:
+            conn.execute(text("SELECT 1"))
+        db_status = "Connected"
+    except Exception as e:
+        db_status = f"Connection Failed: {str(e)}"
+    
+    return {
+        "message": "FreshPath API is live",
+        "database_status": db_status
+    }
