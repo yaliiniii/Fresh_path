@@ -241,7 +241,7 @@
                         const userId = loggedInUser.id;
 
                         try {
-                            const response = await fetch(`http://127.0.0.1:8000/habits/all?user_id=${userId}`);
+                            const response = await fetch(`/api/habits/all?user_id=${userId}`);
                             const habits = await response.json();
 
                             // Group by date

@@ -156,7 +156,7 @@
                 };
 
                 try {
-                  const response = await fetch('http://127.0.0.1:8000/contact/', {
+                  const response = await fetch('/api/contact/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
@@ -184,7 +184,7 @@
                 const messagesList = document.getElementById('userMessagesList');
 
                 try {
-                  const response = await fetch(`http://127.0.0.1:8000/contact/${user.email}`);
+                  const response = await fetch(`/api/contact/${user.email}`);
                   if (response.ok) {
                     const messages = await response.json();
                     if (messages.length > 0) {
