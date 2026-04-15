@@ -241,7 +241,7 @@
                         const userId = loggedInUser.id;
 
                         try {
-                            const response = await fetch(`/api/habits/all?user_id=${userId}`);
+                            const response = await fetch(`https://backend-deployment-zhtp.onrender.com/api/habits/all?user_id=${userId}`);
                             const habits = await response.json();
 
                             // Group by date

@@ -200,7 +200,7 @@
 
                     async function toggleHabit(id, completed) {
                         try {
-                            await fetch(`/api/habits/${id}`, {
+                            await fetch(`https://backend-deployment-zhtp.onrender.com/api/habits/${id}`, {
                                 method: 'PUT',
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify({ completed: completed, date: selectedDate })
@@ -214,7 +214,7 @@
                     async function deleteHabit(id) {
                         if (!confirm('Are you sure you want to delete this habit?')) return;
                         try {
-                            const response = await fetch(`/api/habits/${id}`, {
+                            const response = await fetch(`https://backend-deployment-zhtp.onrender.com/api/habits/${id}`, {
                                 method: 'DELETE'
                             });
                             if (response.ok) {
@@ -231,7 +231,7 @@
                             const user = userJson ? JSON.parse(userJson) : null;
                             if (!user) return;
 
-                            const response = await fetch(`/api/habits/?user_id=${user.id}&date=${selectedDate}`);
+                            const response = await fetch(`https://backend-deployment-zhtp.onrender.com/api/habits/?user_id=${user.id}&date=${selectedDate}`);
                             const habits = await response.json();
                             habitList.innerHTML = '';
 
@@ -274,7 +274,7 @@
                             const user = userJson ? JSON.parse(userJson) : null;
                             if (!user) return;
 
-                            const response = await fetch(`/api/habits/journal?user_id=${user.id}&date=${selectedDate}`);
+                            const response = await fetch(`https://backend-deployment-zhtp.onrender.com/api/habits/journal?user_id=${user.id}&date=${selectedDate}`);
                             const entries = await response.json();
 
                             const entry = entries[0];
@@ -312,7 +312,7 @@
                         };
 
                         try {
-                            const response = await fetch(`/api/habits/?user_id=${user.id}`, {
+                            const response = await fetch(`https://backend-deployment-zhtp.onrender.com/api/habits/?user_id=${user.id}`, {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify(data)
@@ -353,7 +353,7 @@
                         };
 
                         try {
-                            const response = await fetch(`/api/habits/journal?user_id=${user.id}`, {
+                            const response = await fetch(`https://backend-deployment-zhtp.onrender.com/api/habits/journal?user_id=${user.id}`, {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify(data)

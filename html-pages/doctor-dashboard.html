@@ -27,7 +27,7 @@
                     document.getElementById('doctorWelcome').textContent = `Welcome, Dr. ${loggedInDoctor.name}`;
                 }
 
-                const resp = await fetch('/api/appointments/');
+                const resp = await fetch('https://backend-deployment-zhtp.onrender.com/api/appointments/');
                 let appointments = await resp.json();
 
                 // Filter appointments for this doctor if logged in
@@ -90,7 +90,7 @@
 
         async function deleteApp(id) {
             if (confirm('Are you sure you want to cancel this appointment?')) {
-                await fetch(`/api/appointments/${id}`, { method: 'DELETE' });
+                await fetch(`https://backend-deployment-zhtp.onrender.com/api/appointments/${id}`, { method: 'DELETE' });
                 loadDashboardData();
             }
         }
@@ -100,7 +100,7 @@
                 if (newStatus === 'Rejected') {
                     // Delete the appointment when rejected
                     if (!confirm('Reject and delete this appointment request?')) return;
-                    const response = await fetch(`/api/appointments/${id}`, {
+                    const response = await fetch(`https://backend-deployment-zhtp.onrender.com/api/appointments/${id}`, {
                         method: 'DELETE'
                     });
                     if (response.ok) {
@@ -110,7 +110,7 @@
                     }
                 } else {
                     // Accept: update status to Accepted
-                    const response = await fetch(`/api/appointments/${id}/status?status=${newStatus}`, {
+                    const response = await fetch(`https://backend-deployment-zhtp.onrender.com/api/appointments/${id}/status?status=${newStatus}`, {
                         method: 'PATCH'
                     });
                     if (response.ok) {

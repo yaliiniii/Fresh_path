@@ -156,7 +156,7 @@
                 };
 
                 try {
-                  const response = await fetch('/api/contact/', {
+                  const response = await fetch('https://backend-deployment-zhtp.onrender.com/api/contact/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
@@ -184,7 +184,7 @@
                 const messagesList = document.getElementById('userMessagesList');
 
                 try {
-                  const response = await fetch(`/api/contact/${user.email}`);
+                  const response = await fetch(`https://backend-deployment-zhtp.onrender.com/api/contact/${user.email}`);
                   if (response.ok) {
                     const messages = await response.json();
                     if (messages.length > 0) {
